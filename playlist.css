@@ -222,6 +222,17 @@ audio.player {
   padding: 10px;
   cursor: pointer;
 }
+#progress-container {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    width:100%;
+    margin:8px 0;
+}
+
+#progress-bar {
+    flex:1;
+}
 
 @media (max-width: 1000px) and (orientation: portrait) {
     .container {
