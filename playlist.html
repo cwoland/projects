@@ -106,8 +106,20 @@
                 </details>
             </div>
             <audio id="player" class="player" controls preload="none"></audio>
+            <div id="progress-container">
+                <span id="current-time">00:00</span>
+
+                <input
+                    type="range"
+                    id="progress-bar"
+                    value="0"
+                    min="0"
+                    max="100"
+                    >
+                <span id="duration">0"00</span>
             <div id="custom-controls" style="display:none;margin:0.5rem 0;">
                 <button id="prev-btn">⏮</button>
+                <button id="shuffle-btn">🔀</button>
                 <button id="next-btn">⏭</button>
             </div>
         </main>
