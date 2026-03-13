@@ -20,8 +20,8 @@ covers.forEach(cover => {
         details.open = !details.open;
         // Move the player and controls to this box, right after the h4
         const h4 = box.querySelector("h4");
-        h4.insertAdjacentElement("afterend", player);
-        h4.insertAdjacentElement("afterend", customControls);
+        h4.after(player);
+        player.after(customControls);
         // Show them
         player.style.display = "block";
         customControls.style.display = "block";
@@ -43,7 +43,7 @@ document.querySelectorAll(".tracklist li").forEach(li => {
 document.querySelectorAll(".tracklist li").forEach(li => {
     li.addEventListener("click", () => {
 
-        document.querySelectorAll(".tracklsit li")
+        document.querySelectorAll(".tracklist li")
         .forEach(t => t.classList.remove("active"));
 
         li.classList.add("active");
@@ -66,12 +66,4 @@ prevBtn.addEventListener("click", () => {
     if (prevLi && prevLi.dataset.src) {
         prevLi.click();  // simulate click to play
     }
-});
-
-document.querySelectorAll("details").forEach(details => {
-    details.addEventListener("click", e => {
-        if (e.target === details) {
-            details.style.display = "none";  // hide the details element
-        }
-    });
 });
