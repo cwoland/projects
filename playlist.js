@@ -32,13 +32,21 @@ covers.forEach(cover => {
 document.querySelectorAll(".tracklist li").forEach(li => {
     li.addEventListener("click", () => {
         const src = li.dataset.src;
-        if (!src || !player) return;
+        if (!src) return;
 
         currentLi = li;  // track the current track
         player.src = src;
-        player.play().catch(() => {
-            // ignored: user may need to interact first or browser may block autoplay
-        });
+        player.play();
+    });
+});
+
+document.querySelectorAll(".tracklist li").forEach(li => {
+    li.addEventListener("click", () => {
+
+        document.querySelectorAll(".tracklsit li")
+        .forEach(t => t.classList.remove("active"));
+
+        li.classList.add("active");
     });
 });
 
