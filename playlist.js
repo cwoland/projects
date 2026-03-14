@@ -5,7 +5,7 @@ const covers = [
     document.getElementById("album-cover3")
 ];
 
-const tracks = array.from(document.querySelectorAll(".tracklist li"));
+const tracks = Array.from(document.querySelectorAll(".tracklist li"));
 
 const player = document.getElementById("player");
 const customControls = document.getElementById("custom-controls");
@@ -89,6 +89,7 @@ function formatTime(time) {
     const seconds = Math.floor(time % 60);
 
 return minutes + ":" + String(seconds).padStart(2, "0");
+}
 
 player.addEventListener("loadedmetadata", () => {
     progressBar.max = player.duration;
