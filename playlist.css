@@ -2,10 +2,6 @@ body {
     background-color: #121212;
     color: white;
     font-family: sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
 }
 
 .hdr {
@@ -27,19 +23,19 @@ body {
     text-align: center;
 }
 .hdr h1 {
-    font-weight: 200;
-    letter-spacing: 0.5em;
-    font-size: 2.5em;
-    margin: 0;
+    font-family:sans-serif;
+    font-weight: 500;
+    font-size: 3em;
+    margin-top: 3px;
 }
 .hdr h2 {
-    display: inline-block;          /* stay side-by-side on the second line */
-    font-size: 1em;
-    font-weight: 200;
+    display: inline-block;    /* stay side-by-side on the second line */
+    font-size: 1.2em;
+    font-weight: 500;
     background-color: #050505;
     color: white;
     border: 1px solid rgb(100, 100, 100);
-    border-radius: 5px;
+    border-radius: 10px;
     margin: 0 0.5em;                /* small gap between buttons */
     padding: 0 10px;
 }
@@ -52,18 +48,21 @@ body {
     background-color: #3aa317;
     color: rgb(255, 255, 255);
 }
+
+div h2 {
+    text-align: top left;
+    font-family: sans-serif;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
 .container {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     gap: 20px;
-    align-items: flex-start;
     padding: 20px;
-    background-color: white;
-}
-
-.container h2 {
-    color: black;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    background-color: #111010;
 }
 
 .box {
@@ -76,14 +75,14 @@ body {
     min-height: 500px;         /* make all boxes same height */
 }
 .box h3 {
-    font-family: sans serif;
+    font-family: sans-serif;
     font-weight: lighter;
     font-size: 1.5em;
     margin-bottom: 10px;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 .box h4 {
-    font-family: sans serif;
+    font-family: sans-serif;
     font-weight: lighter;
     font-size: 1.2em;
     margin-bottom: 5px;
@@ -198,22 +197,32 @@ details p {
     justify-content: center;
 }
 
-#prev-btn, #next-btn {
+#prev-btn, #next-btn, #shuffle-btn, #pause-btn {
     padding: 0.5rem 1rem;
     background-color: #3aa317;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-bottom: 5px;
 }
 
-#prev-btn:hover, #next-btn:hover {
+#prev-btn:hover, #next-btn:hover, #shuffle-btn:hover, #pause-btn:hover {
     background-color: #174f05;
 }
 audio.player {
     margin-top: 0.5rem;
     width: 100%;
     max-width:100%;
+}
+#player-wrapper {
+    box-sizing: border-box;
+    border: 1px solid rgb(100, 100, 100);
+    border-radius: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .controls button {
@@ -234,9 +243,8 @@ audio.player {
     flex:1;
 }
 
-@media (max-width: 1000px) and (orientation: portrait) {
+@media (max-width: 800px) and (orientation: portrait) {
     .container {
-        flex-direction: column;
         align-items: center;
     }
     .box {
@@ -247,6 +255,8 @@ audio.player {
     #album-cover2,
     #album-cover3 {
         object-fit: cover;
-        width: 90%;
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
     }
 }
