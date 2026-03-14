@@ -10,6 +10,7 @@ const tracks = Array.from(document.querySelectorAll(".tracklist li"));
 const player = document.getElementById("player");
 const customControls = document.getElementById("custom-controls");
 const prevBtn = document.getElementById("prev-btn");
+const pauseBtn = document.getElementById("pause-btn");
 const nextBtn = document.getElementById("next-btn");
 const shuffleBtn = document.getElementById("shuffle-btn");
 
@@ -64,6 +65,16 @@ nextBtn.addEventListener("click", () => {
     if (nextLi && nextLi.dataset.src) {
         nextLi.click();  // simulate click to play
     }
+});
+
+pauseBtn.addEventListener("click", () => {
+    if (player.paused) {
+        player.play();
+        pauseBtn.textContent = "⏸";
+    } else {
+        player.pause();
+        pauseBtn.textContent = "▶️";
+    }   
 });
 
 // Previous button
