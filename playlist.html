@@ -13,8 +13,12 @@
             <h2>Artists</h2><h2 class="active">Albums</h2><h2>Songs</h2><h2>Playlists</h2><h2>Genres</h2>
         </header>
 
-        <main class="container">
-            <h2>ALBUMS</h2><br><br>
+        <main>
+            <div>
+            <h2>ALBUMS</h2>
+            </div>
+            <br>
+            <div class="container">
             <div class="box">
                 <img id="album-cover" src="https://i.pinimg.com/736x/6f/2e/38/6f2e38d139f23457f63751c88e94f3f6.jpg" alt="SD-cover">
                 <h3>Sundowning</h3>
@@ -105,7 +109,8 @@
                     <p>Total length: 56:30</p>
                 </details>
             </div>
-            <audio id="player" class="player" controls preload="none"></audio>
+            <div id="player-wrapper">
+            <audio id="player" class="player" controls preload="none" style="visibility: hidden;"></audio>
             <div id="progress-container">
                 <span id="current-time">00:00</span>
 
@@ -118,11 +123,14 @@
                     >
                 <span id="duration">0:00</span>
             </div>
-            <div id="custom-controls" style="display:none;margin:0.5rem 0;">
-                <button id="prev-btn">⏮</button>
+            <div id="custom-controls">
                 <button id="shuffle-btn">🔀</button>
+                <button id="prev-btn">⏮</button>
+                <button id="pause-btn">⏸</button>
                 <button id="next-btn">⏭</button>
             </div>
+        </div>
+        </div>
         </main>
         <script src="playlist.js"></script>
     </body>
