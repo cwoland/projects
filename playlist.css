@@ -1,9 +1,15 @@
 body {
-    background-color: rgb(222, 220, 214);
+    background-color: #121212;
+    color: white;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 .hdr {
-    font-family: 'Helvetica', sans-serif;
+    font-family: sans-serif;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;               /* allow items to break onto a second line */
@@ -30,6 +36,8 @@ body {
     display: inline-block;          /* stay side-by-side on the second line */
     font-size: 1em;
     font-weight: 200;
+    background-color: #050505;
+    color: white;
     border: 1px solid rgb(100, 100, 100);
     border-radius: 5px;
     margin: 0 0.5em;                /* small gap between buttons */
@@ -41,7 +49,7 @@ body {
     transition: transform 0.3s ease;
 }
 .hdr h2.active {
-    background-color: rgb(100, 100, 100);
+    background-color: #3aa317;
     color: rgb(255, 255, 255);
 }
 .container {
@@ -59,7 +67,7 @@ body {
 }
 
 .box {
-    background-color: rgb(255, 255, 255);
+    background-color: #1a1515;
     padding: 20px;
     border: 1px solid black;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -68,14 +76,14 @@ body {
     min-height: 500px;         /* make all boxes same height */
 }
 .box h3 {
-    font-family: 'Helvetica';
+    font-family: sans serif;
     font-weight: lighter;
     font-size: 1.5em;
     margin-bottom: 10px;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 .box h4 {
-    font-family: 'Helvetica';
+    font-family: sans serif;
     font-weight: lighter;
     font-size: 1.2em;
     margin-bottom: 5px;
@@ -122,7 +130,7 @@ body {
 }
 
 details {
-    background-color: rgb(255, 255, 255);
+    background-color: #1a1515;
     padding: 20px;
     border-radius: 10px;
     width: 100%;               /* fill available space inside the box */
@@ -168,6 +176,11 @@ details p {
     padding: 0.25em 0;
 }
 
+.tracklist li.active {
+    color: #1db954;
+    font-weight: bold;
+}
+
 .tracklist .title {
     font-weight: lighter;
     color: rgb(100, 100, 100);
@@ -187,7 +200,7 @@ details p {
 
 #prev-btn, #next-btn {
     padding: 0.5rem 1rem;
-    background-color: rgb(100, 100, 100);
+    background-color: #3aa317;
     color: white;
     border: none;
     border-radius: 5px;
@@ -195,12 +208,30 @@ details p {
 }
 
 #prev-btn:hover, #next-btn:hover {
-    background-color: rgb(150, 150, 150);
+    background-color: #174f05;
 }
 audio.player {
     margin-top: 0.5rem;
     width: 100%;
     max-width:100%;
+}
+
+.controls button {
+  font-size: 22px;
+  margin: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+#progress-container {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    width:100%;
+    margin:8px 0;
+}
+
+#progress-bar {
+    flex:1;
 }
 
 @media (max-width: 1000px) and (orientation: portrait) {
