@@ -1,9 +1,11 @@
 body {
-    background-color: rgb(222, 220, 214);
+    background-color: #121212;
+    color: white;
+    font-family: sans-serif;
 }
 
 .hdr {
-    font-family: 'Helvetica', sans-serif;
+    font-family: sans-serif;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;               /* allow items to break onto a second line */
@@ -21,17 +23,19 @@ body {
     text-align: center;
 }
 .hdr h1 {
-    font-weight: 200;
-    letter-spacing: 0.5em;
-    font-size: 2.5em;
-    margin: 0;
+    font-family:sans-serif;
+    font-weight: 500;
+    font-size: 3em;
+    margin-top: 3px;
 }
 .hdr h2 {
-    display: inline-block;          /* stay side-by-side on the second line */
-    font-size: 1em;
-    font-weight: 200;
+    display: inline-block;    /* stay side-by-side on the second line */
+    font-size: 1.2em;
+    font-weight: 500;
+    background-color: #050505;
+    color: white;
     border: 1px solid rgb(100, 100, 100);
-    border-radius: 5px;
+    border-radius: 10px;
     margin: 0 0.5em;                /* small gap between buttons */
     padding: 0 10px;
 }
@@ -41,25 +45,28 @@ body {
     transition: transform 0.3s ease;
 }
 .hdr h2.active {
-    background-color: rgb(100, 100, 100);
+    background-color: #3aa317;
     color: rgb(255, 255, 255);
 }
-.container {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    align-items: flex-start;
-    padding: 20px;
-    background-color: white;
-}
 
-.container h2 {
-    color: black;
+div h2 {
+    text-align: top left;
+    font-family: sans-serif;
+    color: white;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    background-color: #111010;
+}
+
 .box {
-    background-color: rgb(255, 255, 255);
+    background-color: #1a1515;
     padding: 20px;
     border: 1px solid black;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -68,14 +75,14 @@ body {
     min-height: 500px;         /* make all boxes same height */
 }
 .box h3 {
-    font-family: 'Helvetica';
+    font-family: sans-serif;
     font-weight: lighter;
     font-size: 1.5em;
     margin-bottom: 10px;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 .box h4 {
-    font-family: 'Helvetica';
+    font-family: sans-serif;
     font-weight: lighter;
     font-size: 1.2em;
     margin-bottom: 5px;
@@ -99,6 +106,11 @@ body {
     font-size: 0.9em;
     color: rgb(100, 100, 100);
 }
+#album-cover0,
+ #album-cover01,
+#album-cover02,
+#album-cover03,
+#album-cover04,
 #album-cover,
 #album-cover1,
 #album-cover2,
@@ -111,18 +123,22 @@ body {
     width: auto;                 /* let width adjust with the height */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
-
+#album-cover0:hover,
+#album-cover01:hover,
+#album-cover02:hover,
+#album-cover03:hover,
+#album-cover04:hover,
 #album-cover:hover,
 #album-cover1:hover,
 #album-cover2:hover,
 #album-cover3:hover {
     cursor: pointer;
     transform: scale(1.2);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease-in-out;
 }
 
 details {
-    background-color: rgb(255, 255, 255);
+    background-color: #1a1515;
     padding: 20px;
     border-radius: 10px;
     width: 100%;               /* fill available space inside the box */
@@ -168,6 +184,11 @@ details p {
     padding: 0.25em 0;
 }
 
+.tracklist li.active {
+    color: #1db954;
+    font-weight: bold;
+}
+
 .tracklist .title {
     font-weight: lighter;
     color: rgb(100, 100, 100);
@@ -182,40 +203,144 @@ details p {
 #custom-controls {
     display: flex;
     gap: 0.5rem;
+    align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
-#prev-btn, #next-btn {
+#prev-btn, #next-btn, #shuffle-btn, #pause-btn {
     padding: 0.5rem 1rem;
-    background-color: rgb(100, 100, 100);
+    background-color: #3aa317;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-bottom: 5px;
+    width: 50px;
 }
 
-#prev-btn:hover, #next-btn:hover {
-    background-color: rgb(150, 150, 150);
+#prev-btn:hover, #next-btn:hover, #shuffle-btn:hover, #pause-btn:hover {
+    background-color: #174f05;
 }
 audio.player {
     margin-top: 0.5rem;
     width: 100%;
     max-width:100%;
 }
+#player-wrapper {
+    box-sizing: border-box;
+    border: 1px solid rgb(100, 100, 100);
+    border-radius: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 
-@media (max-width: 1000px) and (orientation: portrait) {
+#current-track-title {
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #1db954;
+    margin: 10px 0;
+}
+
+.controls button {
+  font-size: 22px;
+  margin: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+#progress-container {
+    display: flex;
+    align-items: center;
+    gap:10px;
+    width:100%;
+    margin:8px 0;
+}
+
+#progress-bar {
+    flex: 1;
+    height: 5px;
+    background-color: #555;
+    border-radius: 5px;
+    position: relative;
+    cursor: pointer;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0,0,0,0.7);
+
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  width: 80%;
+  height: 80%;
+  background: white;
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+@media (max-width: 800px) and (orientation: portrait) {
+    .hdr h2 {
+        display: inline-flex;
+        flex-direction: row;
+        font-size: 1rem;
+    }
+    
     .container {
-        flex-direction: column;
         align-items: center;
     }
     .box {
         width: 90%;
+        overflow: auto;
     }
+    #album-cover0,
+    #album-cover01,
+    #album-cover02,
+    #album-cover03,
+    #album-cover04,
     #album-cover,
     #album-cover1,
     #album-cover2,
     #album-cover3 {
         object-fit: cover;
-        width: 90%;
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
     }
+    #player-wrapper {
+        display: inline-flex;
+        position: sticky;
+        align-items: center;
+        bottom: 0;
+        background-color: #121212;
+        z-index: 10;
+        margin-top: 20px;
+        height: 150px;
+        width: 100%;
+        border-top:#a09a9a solid 1px;
+    }
+    .controls button {
+        width: 100%;
+        align-items: center;
+    }
+    #custom-controls {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 }

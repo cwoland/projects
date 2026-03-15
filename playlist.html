@@ -4,26 +4,89 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Albums</title>
-        <link rel="stylesheet" href="./playlist.css">
+        <link rel="stylesheet" href="playlist.css">
     </head>
 
     <body class="body">
         <header class="hdr">
             <h1>Library</h1>
-            <h2>Artists</h2><h2 class="active">Albums</h2><h2>Songs</h2><h2>Playlists</h2><h2>Genres</h2>
+            <h2 id="openPage">Artists</h2><h2 id="openPage1" class="active">Albums</h2><h2 id="openPage3">Songs</h2><h2 id="openPage4">Playlists</h2><h2 id="openPage5">Genres</h2>
         </header>
 
-        <main class="container">
-            <h2>ALBUMS</h2><br><br>
+        <main>
+            <div>
+            <h2>ALBUMS</h2>
+            </div>
+            <br>
+            <div class="container">
+            <div class="box">
+                <img id="album-cover0" src="./1one/cover.jpg" alt="one-cover">
+                <h3>One</h3>
+                <h4>Sleep Token</h4>
+                <details>
+                    <summary id="tracks" style="display:none;">Tracklist</summary>
+                    <ol class="tracklist">
+                        <li data-src="./1one/01-thread-the-needle.mp3"><span class="title">Thread The Needle</span><span class="length">06:36</span></li>
+                        <li data-src="./1one/02-fields-of-elation.mp3"><span class="title">Fields Of Elation</span><span class="length">04:32</span></li>
+                        <li data-src="./1one/03-when-the-bough-breaks.mp3"><span class="title">When The Bough Breaks</span><span class="length">07:39</span></li>
+                    </ol>
+                    <p>Total length: 18:47</p>
+                </details>
+            </div>
+            <div class="box">
+                <img id="album-cover01" src="./2two/cover.jpg" alt="two-cover">
+                <h3>Two</h3>
+                <h4>Sleep Token</h4>
+                <details>
+                    <summary id="tracks" style="display:none;">Tracklist</summary>
+                    <ol class="tracklist">
+                        <li data-src="./2two/01-calcutta.mp3"><span class="title">Calcutta</span><span class="length">06:53</span></li>
+                        <li data-src="./2two/02-nazareth.mp3"><span class="title">Nazareth</span><span class="length">05:36</span></li>
+                        <li data-src="./2two/03-jericho.mp3"><span class="title">Jericho</span><span class="length">05:17</span></li>
+                    </ol>
+                    <p>Total length: 17:47</p>
+                </details>
+            </div>
+            <div class="box">
+                <img id="album-cover02" src="./3hey-ya/cover.jpg" alt="hey-ya-cover">
+                <h3>Hey Ya! (OutKast cover)</h3>
+                <h4>Sleep Token</h4>
+                <details>
+                    <summary id="tracks" style="display:none;">Tracklist</summary>
+                    <ol class="tracklist">
+                        <li data-src="./3hey-ya/01-hey-ya.mp3"><span class="title">Hey Ya!</span><span class="length">03:08</span></li>
+                    </ol>
+                    <p>Total length: 03:08</p>
+                </details>
+            </div>
+            <div class="box">
+                <img id="album-cover03" src="./4jaws/cover.jpg" alt="jaws-cover">
+                <h3>Jaws</h3>
+                <h4>Sleep Token</h4>
+                <details>
+                    <summary id="tracks" style="display:none;">Tracklist</summary>
+                    <ol class="tracklist">
+                        <li data-src="./4jaws/01-jaws.mp3"><span class="title">Jaws</span><span class="length">05:55</span></li>
+                    </ol>
+                    <p>Total length: 05:55</p>
+                </details>
+            </div>
+            <div class="box">
+                <img id="album-cover04" src="./5the-way-that-you-were/cover.jpg" alt="twtyw-cover">
+                <h3>The Way That You Were</h3>
+                <h4>Sleep Token</h4>
+                <details>
+                    <summary id="tracks" style="display:none;">Tracklist</summary>
+                    <ol class="tracklist">
+                        <li data-src="./5the-way-that-you-were/01-the-way-that-you-were.mp3"><span class="title">The Way That You Were</span><span class="length">03:03</span></li>
+                    </ol>
+                    <p>Total length: 03:03</p>
+                </details>
+            </div>
             <div class="box">
                 <img id="album-cover" src="https://i.pinimg.com/736x/6f/2e/38/6f2e38d139f23457f63751c88e94f3f6.jpg" alt="SD-cover">
                 <h3>Sundowning</h3>
                 <h4>Sleep Token</h4>
-                <audio id="player" controls preload="none" style="display:none;width:100%;max-width:100%;margin:0.5rem 0;"></audio>
-                <div id="custom-controls" style="display:none;margin:0.5rem 0;">
-                    <button id="prev-btn">Previous</button>
-                    <button id="next-btn">Next</button>
-                </div>
                 <details>
                     <summary id="tracks" style="display:none;">Tracklist</summary>
                     <ol class="tracklist">
@@ -47,11 +110,6 @@
                 <img id="album-cover1" src="https://cdn-images.dzcdn.net/images/cover/558190411bf7444617670756807c9901/0x1900-000000-80-0-0.jpg" alt="TPWBYT-cover">
                 <h3>This Place Will Become Your Tomb</h3>
                 <h4>Sleep Token</h4>
-                <audio id="player" class="player" controls preload="none" style="display:none;width:100%;max-width:100%;margin:0.5rem 0;"></audio>
-                <div id="custom-controls1" style="display:none;margin:0.5rem 0;">
-                    <button id="prev-btn">Previous</button>
-                    <button id="next-btn">Next</button>
-                </div>
                 <details>
                     <summary id="tracks1" style="display:none;">Tracklist</summary>
                     <ol class="tracklist">
@@ -75,11 +133,6 @@
                 <img id="album-cover2" src="https://i.pinimg.com/736x/cb/f9/1b/cbf91b8a549da5fe648442302080759c.jpg" alt="TMBTE-cover">
                 <h3>Take Me Back To Eden</h3>
                 <h4>Sleep Token</h4>
-                <audio id="player" class="player" controls preload="none" style="display:none;width:100%;max-width:100%;margin:0.5rem 0;"></audio>
-                <div id="custom-controls2" style="display:none;margin:0.5rem 0;">
-                    <button id="prev-btn">Previous</button>
-                    <button id="next-btn">Next</button>
-                </div>
                 <details>
                     <summary id="tracks2" style="display:none;">Tracklist</summary>
                     <ol class="tracklist">
@@ -103,29 +156,51 @@
                 <img id="album-cover3" src="https://i.pinimg.com/736x/95/4f/d4/954fd42d71cf7a9e7eb6c4f3d8a204ff.jpg" alt="EIA-cover">
                 <h3>Even In Arcadia</h3>
                 <h4>Sleep Token</h4>
-                <audio id="player" class="player" controls preload="none" style="display:none;width:100%;max-width:100%;margin:0.5rem 0;"></audio>
-                <div id="custom-controls3" style="display:none;margin:0.5rem 0;">
-                    <button id="prev-btn">Previous</button>
-                    <button id="next-btn">Next</button>
-                </div>
                 <details>
                     <summary id="tracks3" style="display:none;">Tracklist</summary>
                     <ol class="tracklist">
-                        <li data-src="./eia/01. Look To Windward.flac"><span class="title">Look To Windward</span><span class="length">7:46</span></li>
-                        <li data-src="./eia/02. Emergence.flac"><span class="title">Emergence</span><span class="length">6:26</span></li>
-                        <li data-src="./eia/03. Past Self.flac"><span class="title">Past Self</span><span class="length">3:34</span></li>
-                        <li data-src="./eia/04. Dangerous.flac"><span class="title">Dangerous</span><span class="length">4:11</span></li>
-                        <li data-src="./eia/05. Caramel.flac"><span class="title">Caramel</span><span class="length">4:50</span></li>
-                        <li data-src="./eia/06. Even In Arcadia.flac"><span class="title">Even In Arcadia</span><span class="length">4:28</span></li>
-                        <li data-src="./eia/07. Provider.flac"><span class="title">Provider</span><span class="length">6:05</span></li>
-                        <li data-src="./eia/08. Damocles.flac"><span class="title">Damocles</span><span class="length">4:25</span></li>
-                        <li data-src="./eia/09. Gethsemane.flac"><span class="title">Gethsemane</span><span class="length">6:23</span></li>
-                        <li data-src="./eia/10. Infinite Baths.flac"><span class="title">Infinite Baths</span><span class="length">8:23</span></li>
+                        <li data-src="./eia/01-windward.mp3"><span class="title">Look To Windward</span><span class="length">7:46</span></li>
+                        <li data-src="./eia/02-emergence.mp3"><span class="title">Emergence</span><span class="length">6:26</span></li>
+                        <li data-src="./eia/03-past-self.mp3"><span class="title">Past Self</span><span class="length">3:34</span></li>
+                        <li data-src="./eia/04-dangerous.mp3"><span class="title">Dangerous</span><span class="length">4:11</span></li>
+                        <li data-src="./eia/05-caramel.mp3"><span class="title">Caramel</span><span class="length">4:50</span></li>
+                        <li data-src="./eia/06-even-in-arcadia.mp3"><span class="title">Even In Arcadia</span><span class="length">4:28</span></li>
+                        <li data-src="./eia/07-provider.mp3"><span class="title">Provider</span><span class="length">6:05</span></li>
+                        <li data-src="./eia/08-damocles.mp3"><span class="title">Damocles</span><span class="length">4:25</span></li>
+                        <li data-src="./eia/09-gethsemane.mp3"><span class="title">Gethsemane</span><span class="length">6:23</span></li>
+                        <li data-src="./eia/10-infinite-baths.mp3"><span class="title">Infinite Baths</span><span class="length">8:23</span></li>
                     </ol>
                     <p>Total length: 56:30</p>
                 </details>
             </div>
+            <div id="player-wrapper">
+            <audio id="player" class="player" controls preload="none" style="visibility: hidden;"></audio>
+            <div id="current-track-title"></div>
+            <div id="progress-container">
+                <span id="current-time">00:00</span>
+
+                <input
+                    type="range"
+                    id="progress-bar"
+                    value="0"
+                    min="0"
+                    max="100"
+                    >
+                <span id="duration">0:00</span>
+            </div>
+            <div id="custom-controls">
+                <button id="shuffle-btn">🔀</button>
+                <button id="prev-btn">⏮</button>
+                <button id="pause-btn">⏸</button>
+                <button id="next-btn">⏭</button>
+            </div>
+        </div>
+        <div id="overlay" class="overlay" style="visibility:none;">
+            <div class="modal" style="visibility: none;">
+                <iframe id="modalFrame" src="./artists.html" style="visibility: none; width:100%; height:100%; border:none;"></iframe>
+            </div>
+        </div>
         </main>
-        <script src="./playlist.js"></script>
+        <script src="playlist.js"></script>
     </body>
 </html>

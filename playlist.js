@@ -1,14 +1,32 @@
 const covers = [
+    document.getElementById("album-cover0"),
+    document.getElementById("album-cover01"),
+    document.getElementById("album-cover02"),
+    document.getElementById("album-cover03"),
+    document.getElementById("album-cover04"),
     document.getElementById("album-cover"),
     document.getElementById("album-cover1"),
     document.getElementById("album-cover2"),
     document.getElementById("album-cover3")
 ];
 
+const tracks = Array.from(document.querySelectorAll(".tracklist li"));
+
 const player = document.getElementById("player");
 const customControls = document.getElementById("custom-controls");
 const prevBtn = document.getElementById("prev-btn");
+const pauseBtn = document.getElementById("pause-btn");
 const nextBtn = document.getElementById("next-btn");
+const shuffleBtn = document.getElementById("shuffle-btn");
+
+const progressBar = document.getElementById("progress-bar");
+const currentTimeEl = document.getElementById("current-time");
+const durationEl = document.getElementById("duration");
+const currentTrackTitle = document.getElementById("current-track-title");
+
+const openBtn = document.getElementById("openPage");
+const overlay = document.getElementById("overlay");
+const frame = document.getElementById("modalFrame");
 
 let currentLi = null;
 
@@ -18,11 +36,7 @@ covers.forEach(cover => {
         const details = box.querySelector("details");
         // Toggle the open state
         details.open = !details.open;
-        // Move the player and controls to this box, right after the h4
-        const h4 = box.querySelector("h4");
-        h4.insertAdjacentElement("afterend", player);
-        h4.insertAdjacentElement("afterend", customControls);
-        // Show them
+        // Show the player and controls
         player.style.display = "block";
         customControls.style.display = "block";
     });
@@ -32,13 +46,22 @@ covers.forEach(cover => {
 document.querySelectorAll(".tracklist li").forEach(li => {
     li.addEventListener("click", () => {
         const src = li.dataset.src;
-        if (!src || !player) return;
+        if (!src) return;
 
         currentLi = li;  // track the current track
+        currentTrackTitle.textContent = li.querySelector('.title', '.box').textContent;
         player.src = src;
-        player.play().catch(() => {
-            // ignored: user may need to interact first or browser may block autoplay
-        });
+        player.play();
+    });
+});
+
+document.querySelectorAll(".tracklist li").forEach(li => {
+    li.addEventListener("click", () => {
+
+        document.querySelectorAll(".tracklist li")
+        .forEach(t => t.classList.remove("active"));
+
+        li.classList.add("active");
     });
 });
 
@@ -51,6 +74,16 @@ nextBtn.addEventListener("click", () => {
     }
 });
 
+pauseBtn.addEventListener("click", () => {
+    if (player.paused) {
+        player.play();
+        pauseBtn.textContent = "⏸";
+    } else {
+        player.pause();
+        pauseBtn.textContent = "▶️";
+    }   
+});
+
 // Previous button
 prevBtn.addEventListener("click", () => {
     if (!currentLi) return;
@@ -60,10 +93,44 @@ prevBtn.addEventListener("click", () => {
     }
 });
 
-document.querySelectorAll("details").forEach(details => {
-    details.addEventListener("click", e => {
-        if (e.target === details) {
-            details.style.display = "none";  // hide the details element
-        }
-    });
+function playRandomTrack () {
+    const randomIndex = Math.floor(Math.random() * tracks.length);
+    const randomTrack = tracks[randomIndex];
+    randomTrack.click();
+}
+
+shuffleBtn.addEventListener("click", playRandomTrack);
+player.addEventListener("ended", playRandomTrack);
+
+function formatTime(time) {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+
+return minutes + ":" + String(seconds).padStart(2, "0");
+}
+
+player.addEventListener("loadedmetadata", () => {
+    progressBar.max = player.duration;
+    durationEl.textContent = formatTime(player.duration);
+});
+
+player.addEventListener("timeupdate", () => {
+    progressBar.value = player.currentTime;
+    currentTimeEl.textContent = formatTime(player.currentTime);
+});
+
+player.addEventListener("input", () => {
+    player.currentTime = progressBar.value;
+});
+
+openBtn.addEventListener("click", () => {
+    frame.src = "artists.html";
+    overlay.style.display = flex;    
+});
+
+overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) {
+        overlay.style.display = "none";
+        frame.src = "";
+    }
 });
