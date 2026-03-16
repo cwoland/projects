@@ -24,7 +24,6 @@ const currentTimeEl = document.getElementById("current-time");
 const durationEl = document.getElementById("duration");
 const currentTrackTitle = document.getElementById("current-track-title");
 
-const openBtn = document.getElementById("openPage");
 const overlay = document.getElementById("overlay");
 const frame = document.getElementById("modalFrame");
 
@@ -123,13 +122,19 @@ player.addEventListener("input", () => {
     player.currentTime = progressBar.value;
 });
 
-openBtn.addEventListener("click", () => {
-    frame.src = "artists.html";
-    overlay.style.display = flex;    
-});
+function openPage(page) {
+    frame.src = page;
+    overlay.style.display = "block";
+}
+
+document.getElementById("openArtists").onclick = () => openPage("artists.html");
+document.getElementById("openAlbums").onclick = () => openPage("playlist.html");
+document.getElementById("openSongs").onclick = () => openPage("songs.html");
+document.getElementById("openPlaylists").onclick = () => openPage("playmix.html");
+document.getElementById("openGenres").onclick = () => openPage("genres.html");
 
 overlay.addEventListener("click", (e) => {
-    if (e.target === overlay) {
+    if (e.target === overlay){
         overlay.style.display = "none";
         frame.src = "";
     }
