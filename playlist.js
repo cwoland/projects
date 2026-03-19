@@ -21,6 +21,9 @@ const playIcon = `<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>`;
 const pauseIcon = `<svg viewBox="0 0 24 24"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>`;
 const nextBtn = document.getElementById("next-btn");
 const shuffleBtn = document.getElementById("shuffle-btn");
+const repeatBtn = document.getElementById("repeat-btn");
+
+const currentCover = document.getElementById("current-cover");
 
 const progressBar = document.getElementById("progress-bar");
 const currentTimeEl = document.getElementById("current-time");
@@ -33,6 +36,8 @@ const frame = document.getElementById("modalFrame");
 let hasStarted = false;
 
 let currentLi = null;
+
+let repeatMode = "off"; // off, all, one
 
 covers.forEach(cover => {
     cover.addEventListener("click", () => {
@@ -66,6 +71,12 @@ document.querySelectorAll(".tracklist li").forEach(li => {
 
         artistName.textContent = artist;
 
+        const cover = li.closest(".box")
+            .querySelector("img")
+            .src;
+            
+        currentCover.src = cover;
+
         player.src = src;
         player.play();
 
@@ -87,13 +98,25 @@ nextBtn.addEventListener("click", () => {
     }
 });
 
+pauseBtn.addEventListener("click", () => {
+    if (!currentLi) {
+        playRandomTrack();
+        return;
+    }
+
+    if (player.paused) {
+        player.play();
+    } else {
+        player.pause();
+    }
+});
 
 player.addEventListener("play", () => {
-    pauseBtn.innerHTML = playIcon;
+    pauseBtn.innerHTML = pauseIcon;
 });
 
 player.addEventListener("pause", () => {
-    pauseBtn.innerHTML = pauseIcon;
+    pauseBtn.innerHTML = playIcon;
 });
 
 function updateBtn () {
@@ -116,21 +139,54 @@ function playRandomTrack () {
 }
 
 shuffleBtn.addEventListener("click", playRandomTrack);
-player.addEventListener("ended", playRandomTrack);
-
-pauseBtn.addEventListener("click", () => {
-    if (!hasStarted) {
-        playRandomTrack();
-        hasStarted = true;
+player.addEventListener("ended", () => {
+    if (repeatMode === "one") {
+        player.currentTime = 0;
+        player.play();
         return;
     }
 
-    if (player.paused) {
-        player.play();
-    } else {
-        player.pause();
+    if (repeatMode === "all") {
+        playRandomTrack();
+        return;
+    }
+
+    if (currentLi) {
+        const nextLi = currentLi.nextElementSibling;
+
+        if (nextLi && nextLi.dataset.src) {
+            nextLi.click();
+        }
     }
 });
+
+repeatBtn.addEventListener("click", () => {
+    if (repeatMode === "off") {
+        repeatMode = "all";
+    } else if (repeatMode === "all") {
+        repeatMode = "one";
+    } else {
+        repeatMode = "off";
+    }
+
+    updateRepeatUI();
+});
+
+function updateRepeatUI() {
+    if (repeatMode === "off") {
+        repeatBtn.style.opacity = "0.5";
+    }
+
+    if (repeatMode === "all") {
+        repeatBtn.style.opacity = "1";
+    }
+
+    if (repeatMode === "one") {
+        repeatBtn.style.opacity = "1";
+        repeatBtn.style.transfrom = "scale(1.2)";
+        // You can also change the icon here to indicate "one" mode
+    }
+}
 
 function formatTime(time) {
     const minutes = Math.floor(time / 60);
