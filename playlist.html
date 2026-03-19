@@ -174,9 +174,14 @@
                 </details>
             </div>
             <div id="player-wrapper">
-            <audio id="player" class="player" controls preload="none" style="visibility: hidden;"></audio>
-            <div id="current-track-title"></div>
-            <div id="progress-container">
+             <audio id="player" class="player" controls preload="none" style="visibility: hidden;"></audio>
+             <div id="now-playing">
+                <div id="current-track-title">Track Title</div>
+                <div id="current-artist-name">Artist Name</div>
+             </div>
+
+             <div id="player-center">
+              <div id="progress-container">
                 <span id="current-time">00:00</span>
 
                 <input
@@ -187,13 +192,29 @@
                     max="100"
                     >
                 <span id="duration">0:00</span>
+              </div>
+             <div id="custom-controls">
+                <button id="shuffle-btn">
+                    <svg ViewBox="0 0 24 24">
+                       <path d="M16 3h5v5h-2V6.41l-4.29 4.3-1.42-1.42 4.3-4.29H16V3zM4 17h2.59l4.3-4.29 1.42 1.42L8 18.41V20H4v-3zM16 21h5v-5h-2v1.59l-4.29-4.3-1.42 1.42 4.3 4.29H16v2zM4 4h4v2H6.41l4.3 4.29-1.42 1.42L5 7.41V9H3V4z"/>
+                </svg></button>
+                <button id="prev-btn">
+                    <svg ViewBox="0 0 24 24">
+                        <path d="M18 6l-8.5 6L18 18V6zm-9 0H7v12h2V6z"/>
+                    </svg>
+                </button>
+                <button id="pause-btn">
+                    <svg ViewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                </button>
+                <button id="next-btn">
+                    <svg ViewBox="0 0 24 24">
+                        <path d="M6 18l8.5-6L6 6v12zm9-12h2v12h-2z"/>
+                    </svg>
+                </button>
             </div>
-            <div id="custom-controls">
-                <button id="shuffle-btn">🔀</button>
-                <button id="prev-btn">⏮</button>
-                <button id="pause-btn">⏸</button>
-                <button id="next-btn">⏭</button>
-            </div>
+        </div>
         </div>
         <div id="overlay" class="overlay">
             <div class="modal">
