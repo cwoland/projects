@@ -233,8 +233,23 @@ details p {
 /* 🎵 Название */
 #now-playing {
     width: 100%;
-    text-align: left;
-    padding-left: 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#current-cover {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+#now-playing div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 #current-track-title {
@@ -307,7 +322,8 @@ details p {
 
 #shuffle-btn,
 #prev-btn,
-#next-btn {
+#next-btn,
+#repeat-btn {
     background: #121212;
     border: none;
     cursor: pointer;
@@ -327,7 +343,8 @@ details p {
 
 #shuffle-btn:hover,
 #prev-btn:hover,
-#next-btn:hover {
+#next-btn:hover,
+#repeat-btn:hover {
     transform: scale(1.2);
     transition: 0.2s;
 }
@@ -395,6 +412,11 @@ details p {
         gap: 4px;
     }
 
+    #current-cover {
+        width: 32px;
+        height: 32px;
+    }
+
     #current-track-title {
         font-size: 12px;
     }
@@ -438,7 +460,8 @@ details p {
     #shuffle-btn,
     #prev-btn,
     #next-btn,
-    #pause-btn {
+    #pause-btn,
+    #repeat-btn {
         padding: 5px;
         border-radius: 6px;
     }
