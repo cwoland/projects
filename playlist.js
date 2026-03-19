@@ -11,21 +11,26 @@ const covers = [
 ];
 
 const tracks = Array.from(document.querySelectorAll(".tracklist li"));
+const artists = Array.from(document.querySelectorAll(".artist"));
 
 const player = document.getElementById("player");
 const customControls = document.getElementById("custom-controls");
 const prevBtn = document.getElementById("prev-btn");
 const pauseBtn = document.getElementById("pause-btn");
+const playIcon = `<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>`;
+const pauseIcon = `<svg viewBox="0 0 24 24"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>`;
 const nextBtn = document.getElementById("next-btn");
 const shuffleBtn = document.getElementById("shuffle-btn");
 
 const progressBar = document.getElementById("progress-bar");
 const currentTimeEl = document.getElementById("current-time");
 const durationEl = document.getElementById("duration");
-const currentTrackTitle = document.getElementById("current-track-title");
-
+const trackTitle = document.getElementById("current-track-title");
+const artistName = document.getElementById("current-artist-name");
 const overlay = document.getElementById("overlay");
 const frame = document.getElementById("modalFrame");
+
+let hasStarted = false;
 
 let currentLi = null;
 
@@ -42,25 +47,34 @@ covers.forEach(cover => {
 });
 
 // Play a track when its list item is clicked (requires `data-src` on the <li>)
+
 document.querySelectorAll(".tracklist li").forEach(li => {
     li.addEventListener("click", () => {
+
         const src = li.dataset.src;
         if (!src) return;
 
-        currentLi = li;  // track the current track
-        currentTrackTitle.textContent = li.querySelector('.title', '.box').textContent;
+        currentLi = li;
+
+        // 🎵 ТРЕК
+        trackTitle.textContent = li.querySelector(".title").textContent;
+
+        // 👤 АРТИСТ (берём из альбома)
+        const artist = li.closest(".box")
+            .querySelector(".artist")
+            .textContent;
+
+        artistName.textContent = artist;
+
         player.src = src;
         player.play();
-    });
-});
 
-document.querySelectorAll(".tracklist li").forEach(li => {
-    li.addEventListener("click", () => {
-
+        // active track
         document.querySelectorAll(".tracklist li")
-        .forEach(t => t.classList.remove("active"));
+            .forEach(t => t.classList.remove("active"));
 
         li.classList.add("active");
+
     });
 });
 
@@ -73,15 +87,18 @@ nextBtn.addEventListener("click", () => {
     }
 });
 
-pauseBtn.addEventListener("click", () => {
-    if (player.paused) {
-        player.play();
-        pauseBtn.textContent = "⏸";
-    } else {
-        player.pause();
-        pauseBtn.textContent = "▶️";
-    }   
+
+player.addEventListener("play", () => {
+    pauseBtn.innerHTML = playIcon;
 });
+
+player.addEventListener("pause", () => {
+    pauseBtn.innerHTML = pauseIcon;
+});
+
+function updateBtn () {
+    pauseBtn.innerHTML = player.paused ? playIcon : pauseIcon;
+}
 
 // Previous button
 prevBtn.addEventListener("click", () => {
@@ -101,6 +118,20 @@ function playRandomTrack () {
 shuffleBtn.addEventListener("click", playRandomTrack);
 player.addEventListener("ended", playRandomTrack);
 
+pauseBtn.addEventListener("click", () => {
+    if (!hasStarted) {
+        playRandomTrack();
+        hasStarted = true;
+        return;
+    }
+
+    if (player.paused) {
+        player.play();
+    } else {
+        player.pause();
+    }
+});
+
 function formatTime(time) {
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60);
@@ -118,13 +149,25 @@ player.addEventListener("timeupdate", () => {
     currentTimeEl.textContent = formatTime(player.currentTime);
 });
 
-player.addEventListener("input", () => {
+progressBar.addEventListener("input", () => {
     player.currentTime = progressBar.value;
+});
+
+progressBar.addEventListener("mousedown", () => {
+    player.pause();
+});
+
+progressBar.addEventListener("mouseup", () => {
+    player.play();
+});
+
+player.addEventListener("ended", () => {
+    pauseBtn.innerHTML = playIcon;
 });
 
 function openPage(page) {
     frame.src = page;
-    overlay.style.display = "block";
+    overlay.style.display = "flex";
 }
 
 document.getElementById("openArtists").onclick = () => openPage("artists.html");
