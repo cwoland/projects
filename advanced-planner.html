@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Advanced planner</title>
+        <link rel="stylesheet" href="advanced-planner.css">
+    </head>
+
+    <body>
+       <div class="container">
+        <input type="text" class="search-input" placeholder="Найти..." />
+        <div class="todo-app">
+            <div class="filters">
+                <button data-filter="all" class="filter-btn">Все</button>
+                <button data-filter="active" class="filter-btn">Активные</button>
+                <button data-filter="completed" class="filter-btn">Завершенные</button>
+            </div>
+            <div class="todo-input">
+             <h1>список задач</h1>
+             <input type="text" class="task-input" placeholder="Введите задачу" required /> 
+             <button class="add-task-btn">Добавить задачу</button>
+             <button class="remove-task-btn">Удалить задачу</button>
+             <button class="remove-all">Очистить</button>
+            </div>
+            <ul class="todo-list"></ul>
+        </div>
+       </div>
+        <script src="advanced-planner.js"></script>
+    </body>
+</html>
+
