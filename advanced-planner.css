@@ -1,6 +1,9 @@
 body {
-    background-image: url("https://i.pinimg.com/1200x/4a/9a/cc/4a9acc78ecd35a087a7140320fd24112.jpg");
-    background-size: 100% 100%;
+    background-image: url("https://i.pinimg.com/1200x/4a/9a/cc/4a9acc78ecd35a087a7140320fd24112.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     font-family: sans-serif;
 }
 
