@@ -2,7 +2,6 @@ body {
     background-image: url("https://i.pinimg.com/1200x/4a/9a/cc/4a9acc78ecd35a087a7140320fd24112.jpg");
     background position: center center;
     background-size: cover;
-    background-repeat: no-repeat;
     background-attachment: fixed;
     font-family: sans-serif;
 }
