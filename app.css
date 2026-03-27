@@ -1,0 +1,87 @@
+body {
+    background: #212020;
+    font-family: sans-serif;
+}
+
+.header {
+    display: block;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+    height: auto;
+    max-height: 150px;
+    margin-bottom: 30px;
+    background: hsla(0, 0%, 7%, 0.726);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    left: 0;
+}
+
+.header h1 {
+    text-align: top left;
+    color: white;
+    font-weight: lighter;
+    font-size: 38px;
+}
+
+.search-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    border:none;
+    border-radius: 8px;
+}
+
+.player {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    min-height: 100px;
+}
+
+.track.active {
+    background: #e0e0e0;
+}
+
+.disabled {
+    opacity: 0,4;
+    pointer-events: none;
+}
+
+.progress-container {
+    width: 100%;
+    height: 5px;
+    background: #ccc;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.progress-container:hover .progress {
+    background: #1db954;
+}
+
+.progress {
+    height: 100%;
+    width: 0%;
+    background: black;
+}
+
+.time {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+}
+
+button {
+    opacity: 0.5;
+}
+
+button.active {
+    opacity: 1;
+}

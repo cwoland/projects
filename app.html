@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Spotify API Example</title>
+        <link rel="stylesheet" href="app.css">
+    </head>
+
+    <body>
+        <div class="header">
+        <h1>Spotify</h1>
+        </div>
+        <input type="text" class="search-input" placeholder="Search">
+        <div class="tracks-list"></div>
+        <div class="player">
+            <img class="player-img" />
+            <div class="player-info">
+                <div class="player-title"></div>
+                <div class="player-artist"></div>
+            </div>
+            <button class="shuffle-btn">🔀</button>
+            <button class="prev-btn">⏮</button>
+            <button class="play-btn">▶</button>
+            <button class="next-btn">⏭</button>
+            <button class="repeat-btn">🔁</button>
+            <div class="progress-container">
+                <div class="progress"></div>
+            </div>
+
+            <div class="time">
+                <span class="current-time">0:00</span> / <span class="duration">0:00</span>
+            </div>
+        </div>
+        <script type="module" src="app.js"></script>
+    </body>
